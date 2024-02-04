@@ -16,12 +16,15 @@
         app:menu="@menu/main_bottom_nav_menu" />
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/materialToolbar"
+        android:id="@+id/mainToolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:title="Raven"
+        app:titleTextColor="#ffffffff"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        app:menu="@menu/main_toolbar_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -33,7 +36,7 @@
         app:layout_constraintBottom_toTopOf="@+id/mainBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
+        app:layout_constraintTop_toBottomOf="@+id/mainToolbar">
 
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
