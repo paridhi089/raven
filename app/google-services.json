@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "213180032084",
+    "project_id": "raven-e9514",
+    "storage_bucket": "raven-e9514.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213180032084:android:394c1260b094344d10f9c1",
+        "android_client_info": {
+          "package_name": "dev.paridhi.raven"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAflh-9r4gvkiQDYLG8s289av5ksFoHIx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
