@@ -1,4 +1,4 @@
-package dev.paridhi.raven;
+package dev.paridhi.raven.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,8 @@ import android.view.View;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import dev.paridhi.raven.R;
+import dev.paridhi.raven.activities.LoginActivity;
 import dev.paridhi.raven.databinding.ActivityMainBinding;
 import dev.paridhi.raven.fragments.mainactivity.ConnectFragment;
 import dev.paridhi.raven.fragments.mainactivity.InboxFragment;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 if(item.getItemId()==R.id.logout_menu)
                 {
                     firebaseAuth.signOut();
-                    Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
+                    Intent intent=new Intent(getApplicationContext(), LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }

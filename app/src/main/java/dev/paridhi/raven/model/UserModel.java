@@ -10,6 +10,31 @@ public class UserModel {
 
     private long created_at;
 
+    public UserModel() {
+
+    }
+    public String getInitials()
+    {
+        String[] names = this.displayName.split("\\s+");
+        String initals;
+        int lenArray=names.length;
+
+        if(lenArray>1) {
+            String fname = names[0];
+            String lname = names[lenArray - 1];
+            initals = fname.substring(0, 1) + lname.substring(0, 1);
+            return initals.toUpperCase();
+        }
+        else
+        {
+            String fname = names[0];
+            return fname.substring(0, 1);
+        }
+
+    }
+
+
+
     public UserModel(String displayName, String email, String photoUrl, long created_at) {
         this.displayName = displayName;
         this.email = email;
