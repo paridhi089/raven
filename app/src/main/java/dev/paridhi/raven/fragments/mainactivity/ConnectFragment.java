@@ -102,28 +102,21 @@ public class ConnectFragment extends Fragment {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if(task.isSuccessful() && task.getResult().isEmpty())
                         {
-
                             channelReference=channelCollection.document();
                             ChannelModel channelModel =new ChannelModel();
                             channelModel.setMembers(members);
                             channelModel.setLastmessage("No Messages!");
-
                             channelReference.set(channelModel);
                             String channelID=channelReference.getId();
-
-
                             Map<String, Object> timestamp=new HashMap<>();
                             timestamp.put("timestamp", FieldValue.serverTimestamp());
                             fStore.collection("users").document(fAuth.getCurrentUser().getUid()).collection("myChannels").document(channelID).set(timestamp);
                             fStore.collection("users").document(UUID).collection("myChannels").document(channelID).set(timestamp);
                             Toast.makeText(getContext(), "Channel Created", Toast.LENGTH_SHORT).show();
-
                         }
                         else if(task.isSuccessful() && !task.getResult().isEmpty())
                         {
-
                             Toast.makeText(getContext(), "Channel already exists", Toast.LENGTH_SHORT).show();
-
                         }
 
                     }
