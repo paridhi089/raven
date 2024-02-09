@@ -31,13 +31,6 @@ public class ChannelsRVA extends FirestoreRecyclerAdapter<ChannelModel,ChannelsR
 
     public OnItemClickListener listener;
     Helper helper=new Helper();
-
-
-
-
-
-
-
     public ChannelsRVA(@NonNull FirestoreRecyclerOptions<ChannelModel> options) {
         super(options);
     }
@@ -51,9 +44,7 @@ public class ChannelsRVA extends FirestoreRecyclerAdapter<ChannelModel,ChannelsR
             String otheruserid,currentuser;
             currentuser=firebaseAuth.getCurrentUser().getUid();
             //List<String> member=model.getMembers();
-            Log.d("Ch123","Current User: "+currentuser);
-            Log.d("Ch123","Ran from before: USER1:  "+model.getMembers().get(0)+" USER2: "+model.getMembers().get(1));
-            Log.d("Ch123","Other User: "+model.getOtherUser(currentuser));
+
 
             if(firebaseAuth.getCurrentUser()!=null) {
                 fStore.collection("users").document(model.getOtherUser(currentuser)).addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -100,10 +91,6 @@ public class ChannelsRVA extends FirestoreRecyclerAdapter<ChannelModel,ChannelsR
         public ChannelHolder(@NonNull View itemView) {
             super(itemView);
 
-
-
-
-
             mdisplayName=itemView.findViewById(R.id.channel_user_displayname);
             mLastMessage=itemView.findViewById(R.id.channel_lastmessage);
             mImageview=itemView.findViewById(R.id.channel_rv_profile_image);
@@ -119,10 +106,6 @@ public class ChannelsRVA extends FirestoreRecyclerAdapter<ChannelModel,ChannelsR
 
                 }
             });
-
-
-
-
         }
     }
 

@@ -59,7 +59,7 @@ public class ConnectFragment extends Fragment {
         fStore=FirebaseFirestore.getInstance();
 
         //For Testing
-        setUpRecyclerView("");
+
 
         binding.searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class ConnectFragment extends Fragment {
     }
 
     private void setUpRecyclerView(String searchKey) {
-        Query query=fStore.collection("users").orderBy("displayName");
+        Query query=fStore.collection("users").orderBy("displayName").whereEqualTo("email",searchKey);
         FirestoreRecyclerOptions<UserModel> options=new FirestoreRecyclerOptions.Builder<UserModel>().setQuery(query,UserModel.class).build();
         adapter=new ConnectRVA(options);
         RecyclerView recyclerView=binding.connectFragmentRecycler;
