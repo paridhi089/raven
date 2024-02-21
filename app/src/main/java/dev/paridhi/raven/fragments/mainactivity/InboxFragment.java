@@ -50,14 +50,6 @@ public class InboxFragment extends Fragment {
 
 
 
-
-
-
-
-
-
-
-
         return view;
     }
 
@@ -80,7 +72,7 @@ public class InboxFragment extends Fragment {
                 Bundle bundle=new Bundle();
                 bundle.putString("Name",FullName.getText().toString());
                 bundle.putString("channelID",documentSnapshot.getId().toString());
-                bundle.putString("reciverID",channelModel.getOtherUser(firebaseAuth.getCurrentUser().getUid()));
+                bundle.putString("receiverID",channelModel.getOtherUser(firebaseAuth.getCurrentUser().getUid()));
                 bundle.putString("senderID",firebaseAuth.getCurrentUser().toString());
 
                 intent.putExtras(bundle);

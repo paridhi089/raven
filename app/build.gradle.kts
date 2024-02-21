@@ -9,6 +9,7 @@ android {
 
     buildFeatures{
         viewBinding=true
+
     }
 
     defaultConfig {
