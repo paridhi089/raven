@@ -73,7 +73,7 @@ public class InboxFragment extends Fragment {
                 bundle.putString("Name",FullName.getText().toString());
                 bundle.putString("channelID",documentSnapshot.getId().toString());
                 bundle.putString("receiverID",channelModel.getOtherUser(firebaseAuth.getCurrentUser().getUid()));
-                bundle.putString("senderID",firebaseAuth.getCurrentUser().toString());
+                bundle.putString("senderID",firebaseAuth.getCurrentUser().getUid().toString());
 
                 intent.putExtras(bundle);
                 startActivity(intent);

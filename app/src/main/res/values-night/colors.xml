@@ -3,5 +3,6 @@
     <color name="black">#FFFFFFFF</color>
     <color name="white">#FF000000</color>
     <color name="CardBG">#000000</color>
+    <color name="ButtonBG">#6750a4</color>
 
 </resources>
