@@ -4,5 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="CardBG">#ffffff</color>
     <color name="ButtonBG">#6750a4</color>
+    <color name="Accent"> #c171d5</color>
+    <color name="backgroundsec">#54DAD7D7</color>
+    <color name="purple_700">#FF3700B3</color>
 
 </resources>

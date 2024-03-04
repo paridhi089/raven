@@ -47,6 +47,7 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
     implementation("com.squareup.picasso:picasso:2.8")
     testImplementation("junit:junit:4.13.2")
+    implementation("org.ocpsoft.prettytime:prettytime:5.0.4.Final")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

@@ -60,43 +60,40 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutMessageBox"
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+
+    <EditText
+        android:id="@+id/chat_message"
         android:layout_width="0dp"
         android:layout_height="57dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:ems="10"
         android:hint="Enter Message"
-        app:boxStrokeWidth="0dp"
-        app:expandedHintEnabled="false"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textAlignment="textStart"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/messageSend"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/chat_message"
-            android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:ems="10"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textAlignment="textStart"
-            android:textSize="17sp" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton
         android:id="@+id/messageSend"
         android:layout_width="wrap_content"
         android:layout_height="57dp"
+        android:layout_marginTop="610dp"
         android:backgroundTint="@color/ButtonBG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textInputLayoutMessageBox"
+        app:layout_constraintTop_toTopOf="@+id/showMessages"
         app:srcCompat="@drawable/baseline_send_24" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/showMessages"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayoutMessageBox"
+        app:layout_constraintBottom_toTopOf="@+id/chat_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
