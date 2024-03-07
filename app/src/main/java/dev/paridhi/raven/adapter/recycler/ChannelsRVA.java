@@ -44,8 +44,6 @@ public class ChannelsRVA extends FirestoreRecyclerAdapter<ChannelModel,ChannelsR
             String otheruserid,currentuser;
             currentuser=firebaseAuth.getCurrentUser().getUid();
             //List<String> member=model.getMembers();
-
-
             if(firebaseAuth.getCurrentUser()!=null) {
                 fStore.collection("users").document(model.getOtherUser(currentuser)).addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
@@ -66,14 +64,10 @@ public class ChannelsRVA extends FirestoreRecyclerAdapter<ChannelModel,ChannelsR
                 });
             }
 
-
-
         }catch (Exception e)
         {
             e.printStackTrace();
         }
-
-
     }
 
     @NonNull
@@ -111,12 +105,9 @@ public class ChannelsRVA extends FirestoreRecyclerAdapter<ChannelModel,ChannelsR
 
     public interface OnItemClickListener {
         void onItemClick(DocumentSnapshot documentSnapshot, int position, TextView FullName, TextView ImageURL);
-
     }
     public void setOnItemClickListener(ChannelsRVA.OnItemClickListener listener){
         this.listener=listener;
 
     }
-
-
 }

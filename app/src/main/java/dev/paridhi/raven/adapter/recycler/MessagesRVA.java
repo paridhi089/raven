@@ -48,8 +48,6 @@ public class MessagesRVA extends RecyclerView.Adapter {
             View view=LayoutInflater.from(context).inflate(R.layout.layout_receiver,parent,false);
             return  new ReceiverViewHolder(view);
         }
-
-
     }
 
     @Override
@@ -72,25 +70,18 @@ public class MessagesRVA extends RecyclerView.Adapter {
         {
             e.printStackTrace();
         }
-
-
-
     }
-
     @Override
     public int getItemViewType(int position) {
         MessageModel MM=messages.get(position);
         if(FirebaseAuth.getInstance().getCurrentUser().getUid().equals(MM.getSenderId()))
         {
             return ITEM_SENT;
-
         }else
         {
             return  ITEM_RECEIVE;
         }
     }
-
-
 
     @Override
     public int getItemCount() {

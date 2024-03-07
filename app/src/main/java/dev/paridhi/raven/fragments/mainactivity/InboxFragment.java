@@ -54,7 +54,7 @@ public class InboxFragment extends Fragment {
     }
 
     public void setUpRecylerView(View view) {
-        Query query=fStore.collection("channels").whereArrayContains("members",firebaseAuth.getCurrentUser().getUid());
+        Query query=fStore.collection("channels").whereArrayContains("members",firebaseAuth.getCurrentUser().getUid()).orderBy("time", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<ChannelModel> options=new FirestoreRecyclerOptions.Builder<ChannelModel>().setQuery(query,ChannelModel.class).build();
         adapter=new ChannelsRVA(options);
         RecyclerView recyclerView=binding.inboxRV;
