@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/background"
     android:layout_height="match_parent"
     tools:context=".activities.ChatActivity">
 
@@ -10,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/primary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +29,8 @@
                 android:layout_width="50sp"
                 android:layout_height="50sp"
                 app:avatarViewInitials="AB"
+                app:avatarViewInitialsBackgroundColor="@color/avatarBackground"
+                app:avatarViewInitialsTextColor="@color/primary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/backButton"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -61,40 +64,64 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-    <EditText
-        android:id="@+id/chat_message"
-        android:layout_width="0dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
-        android:ems="10"
-        android:hint="Enter Message"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textAlignment="textStart"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/messageSend"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <ImageButton
-        android:id="@+id/messageSend"
-        android:layout_width="wrap_content"
-        android:layout_height="57dp"
-        android:backgroundTint="@color/ButtonBG"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/chat_message"
-        app:srcCompat="@drawable/baseline_send_24" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/messagesRV"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/chat_message"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/backgroundTertiary"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/backgroundTertiary">
+
+            <EditText
+                android:id="@+id/chat_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@color/backgroundTertiary"
+                android:ems="10"
+                android:hint="Enter Message"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textAlignment="textStart"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/messageSend"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/messageSend"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="@color/backgroundTertiary"
+                app:circularflow_radiusInDP="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/chat_message"
+                app:srcCompat="@drawable/baseline_send_24" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

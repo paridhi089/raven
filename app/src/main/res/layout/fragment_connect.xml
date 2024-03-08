@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/background"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.mainactivity.ConnectFragment">
@@ -10,45 +11,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:hint="Search By Email"
-            app:boxCornerRadiusBottomEnd="50dp"
-            app:boxCornerRadiusBottomStart="50dp"
-            app:boxCornerRadiusTopEnd="50dp"
-            app:boxCornerRadiusTopStart="50dp"
-            app:boxStrokeWidth="0dp"
-            app:layout_constraintEnd_toStartOf="@+id/searchBtn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:startIconDrawable="@drawable/baseline_person_24">
-
-            <EditText
-                android:id="@+id/connect_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:padding="10dp"
-                android:textAlignment="textStart"
-                android:textSize="17sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/searchBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginEnd="16dp"
-            android:text="Search"
-            app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
+            android:background="@color/backgroundTertiary"
+            app:cardCornerRadius="25dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/backgroundTertiary">
+
+                <EditText
+                    android:id="@+id/connect_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:background="@color/backgroundTertiary"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:hint="Search User"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/searchBtn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/searchBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="@color/backgroundTertiary"
+                    app:circularflow_radiusInDP="60dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:srcCompat="@drawable/search" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/connectFragmentRecycler"
@@ -58,7 +68,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

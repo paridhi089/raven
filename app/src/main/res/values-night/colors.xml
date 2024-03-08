@@ -8,4 +8,11 @@
     <color name="backgroundsec">#121212</color>
     <color name="purple_700">#FF3700B3</color>
 
+    <color name="primary">#FF326e62</color>
+    <color name="secondary">#FF81b8a8</color>
+    <color name="background">#FF151118</color>
+    <color name="backgroundSecondary">#FFd3d5d9</color>
+
+    <color name="avatarBackground">#Fff8f6f1</color>
+
 </resources>

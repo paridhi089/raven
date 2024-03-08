@@ -26,6 +26,8 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_marginStart="8dp"
+                app:avatarViewInitialsBackgroundColor="@color/avatarBackground"
+                app:avatarViewInitialsTextColor="@color/primary"
                 android:layout_marginTop="8dp"
                 app:avatarViewInitials="NA"
                 app:layout_constraintStart_toStartOf="parent"

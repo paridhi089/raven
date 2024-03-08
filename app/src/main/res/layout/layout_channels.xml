@@ -25,6 +25,8 @@
                 android:id="@+id/channel_rv_profile_image"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
+                app:avatarViewInitialsBackgroundColor="@color/avatarBackground"
+                app:avatarViewInitialsTextColor="@color/primary"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 app:avatarViewInitials="NA"

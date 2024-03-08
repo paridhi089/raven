@@ -35,7 +35,7 @@
             android:autoLink="all"
             android:padding="8dp"
             android:text="message"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textColorLink="@color/purple_700"
             android:textSize="14sp" />
 

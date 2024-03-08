@@ -27,12 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         View view=binding.getRoot();
         setContentView(view);
         firebaseAuth=FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser()!=null)
-        {
-            Intent intent=new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+
 
 
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {

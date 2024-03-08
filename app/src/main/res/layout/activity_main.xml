@@ -10,6 +10,7 @@
         android:id="@+id/mainBottomNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:backgroundTint="@color/secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,15 +20,16 @@
         android:id="@+id/mainToolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:title="Raven"
-        app:titleTextColor="#ffffffff"
         android:background="?attr/colorPrimary"
+        android:backgroundTint="@color/primary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:menu="@menu/main_toolbar_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/main_toolbar_menu"
+        app:title="Raven"
+        app:titleTextColor="#ffffffff" />
 
     <FrameLayout
         android:id="@+id/main_frame_layout"

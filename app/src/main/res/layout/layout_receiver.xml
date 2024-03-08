@@ -35,7 +35,7 @@
             android:autoLink="all"
             android:padding="8dp"
             android:text="message"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorLink="@color/Accent"
             android:textSize="14sp" />
     </LinearLayout>
