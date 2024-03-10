@@ -36,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding.mainToolbar.setTitle(firebaseAuth.getCurrentUser().getEmail());
 
-
-
-
-
         binding.mainToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -47,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 if(item.getItemId()==R.id.logout_menu)
                 {
                     firebaseAuth.signOut();
-                    Intent intent=new Intent(getApplicationContext(), LoginActivity.class);
+                    Intent intent=new Intent(getApplicationContext(), LandingActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
