@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout,new InboxFragment()).commit();
 
+        binding.mainToolbar.setTitle(firebaseAuth.getCurrentUser().getEmail());
+
 
 
 
