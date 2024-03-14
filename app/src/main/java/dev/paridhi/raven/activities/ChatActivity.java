@@ -28,8 +28,14 @@ import java.util.Map;
 import dev.paridhi.raven.R;
 import dev.paridhi.raven.adapter.recycler.MessagesRVA;
 import dev.paridhi.raven.databinding.ActivityChatBinding;
+import dev.paridhi.raven.model.ApiMessageModel;
+import dev.paridhi.raven.model.ApiResponseModel;
 import dev.paridhi.raven.model.MessageModel;
 import dev.paridhi.raven.others.Helper;
+import dev.paridhi.raven.others.RetrofitClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
@@ -127,41 +133,115 @@ public class ChatActivity extends AppCompatActivity {
         String message=binding.chatMessage.getText().toString();
         if(!message.isEmpty())
         {
-            DocumentReference documentReference=firestore.collection("channels").document(channelID).collection("messages").document();
-            MessageModel messageModel=new MessageModel(message,senderID);
-            documentReference.set(messageModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+            ApiMessageModel apiMessageModel=new ApiMessageModel(message);
+
+            Call<ApiResponseModel> call= RetrofitClient.getInstance().getApi().getMessageType(apiMessageModel);
+
+            call.enqueue(new Callback<ApiResponseModel>() {
                 @Override
-                public void onSuccess(Void unused) {
-                    DocumentReference channels=firestore.collection("channels").document(channelID);
-                    Map<String,Object> Lastmessage=new HashMap<>();
-                    Lastmessage.put("lastmessage",message);
-                    Lastmessage.put("time", FieldValue.serverTimestamp());
-                    channels.update(Lastmessage).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            binding.chatMessage.setText("");
-                            adapter.notifyDataSetChanged();
+                public void onResponse(Call<ApiResponseModel> call, Response<ApiResponseModel> response) {
+                    try {
+                        String pred=response.body().getPrediction();
+                        Toast.makeText(getApplicationContext(),pred,Toast.LENGTH_LONG).show();
+
+
+                        if(pred=="ham")
+                        {
+                            DocumentReference documentReference=firestore.collection("channels").document(channelID).collection("messages").document();
+
+                            MessageModel messageModel=new MessageModel(message,senderID);
+                            documentReference.set(messageModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    DocumentReference channels=firestore.collection("channels").document(channelID);
+                                    Map<String,Object> LastMessage=new HashMap<>();
+                                    LastMessage.put("lastmessage",message);
+                                    LastMessage.put("time", FieldValue.serverTimestamp());
+                                    channels.update(LastMessage).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            binding.chatMessage.setText("");
+                                            adapter.notifyDataSetChanged();
+
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(getApplicationContext(),"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+
+
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getApplicationContext(),"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
+                                }
+                            });
 
                         }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(),"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
-                        }
-                    });
+                        else
+                        {
+                            DocumentReference documentReference=firestore.collection("channels").document(channelID).collection("spam").document();
 
+                            MessageModel messageModel=new MessageModel(message,senderID);
+                            documentReference.set(messageModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    DocumentReference channels=firestore.collection("channels").document(channelID);
+                                    Map<String,Object> LastSpamMessage=new HashMap<>();
+                                    LastSpamMessage.put("lastSpamMessage",message);
+                                    LastSpamMessage.put("time", FieldValue.serverTimestamp());
+                                    channels.update(LastSpamMessage).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            binding.chatMessage.setText("");
+                                            adapter.notifyDataSetChanged();
+
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(getApplicationContext(),"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+
+
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getApplicationContext(),"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                        }
+
+                    }catch (Exception e)
+                    {
+                        Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+
+                    }
 
 
                 }
-            }).addOnFailureListener(new OnFailureListener() {
+
                 @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getApplicationContext(),"Error: "+e.getMessage(),Toast.LENGTH_LONG).show();
+                public void onFailure(Call<ApiResponseModel> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_LONG).show();
+
                 }
             });
 
 
+
+
         }
+        adapter.notifyDataSetChanged();
 
     }
 }
