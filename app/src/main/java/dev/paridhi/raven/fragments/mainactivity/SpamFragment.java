@@ -20,6 +20,7 @@ import com.google.firebase.firestore.Query;
 
 import dev.paridhi.raven.R;
 import dev.paridhi.raven.activities.ChatActivity;
+import dev.paridhi.raven.activities.SpamMessagesActivity;
 import dev.paridhi.raven.adapter.recycler.ChannelsRVA;
 import dev.paridhi.raven.adapter.recycler.SpamChannelsRVA;
 import dev.paridhi.raven.databinding.FragmentSpamBinding;
@@ -72,7 +73,7 @@ public class SpamFragment extends Fragment {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position, TextView FullName, TextView ImageURL) {
                 ChannelModel channelModel=documentSnapshot.toObject(ChannelModel.class);
-                Intent intent=new Intent(getActivity(), ChatActivity.class);
+                Intent intent=new Intent(getActivity(), SpamMessagesActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("Name",FullName.getText().toString());
                 bundle.putString("channelID",documentSnapshot.getId().toString());
