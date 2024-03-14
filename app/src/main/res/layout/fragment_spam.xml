@@ -2,13 +2,12 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/background"
     android:layout_height="match_parent"
     tools:context=".fragments.mainactivity.SpamFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/spamRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Spam fragment" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>

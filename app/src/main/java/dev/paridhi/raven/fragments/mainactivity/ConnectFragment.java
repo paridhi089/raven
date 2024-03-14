@@ -67,6 +67,8 @@ public class ConnectFragment extends Fragment {
 
                 String searchKey=binding.connectSearch.getText().toString();
 
+                binding.resultmessage.setVisibility(View.INVISIBLE);
+
                 setUpRecyclerView(searchKey);
             }
         });
@@ -84,6 +86,9 @@ public class ConnectFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         adapter.startListening();
         adapter.notifyDataSetChanged();
+
+
+
 
         adapter.setOnItemClickListener(new ConnectRVA.OnItemClickListener() {
             @Override
@@ -106,6 +111,7 @@ public class ConnectFragment extends Fragment {
                             ChannelModel channelModel =new ChannelModel();
                             channelModel.setMembers(members);
                             channelModel.setLastmessage("No Messages!");
+                            channelModel.setLastSpamMessage("No Messages!");
                             channelReference.set(channelModel);
                             String channelID=channelReference.getId();
                             Map<String, Object> timestamp=new HashMap<>();

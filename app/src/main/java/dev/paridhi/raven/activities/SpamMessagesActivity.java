@@ -6,12 +6,12 @@ import android.os.Bundle;
 
 import dev.paridhi.raven.R;
 
-public class MessagesActivity extends AppCompatActivity {
+public class SpamMessagesActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_messages);
+        setContentView(R.layout.activity_spam_messages);
     }
 }

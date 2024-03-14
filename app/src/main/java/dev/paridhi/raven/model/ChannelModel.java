@@ -8,14 +8,24 @@ import java.util.List;
 public class ChannelModel {
     List<String> members;
     String lastmessage;
+    String lastSpamMessage;
 
     @ServerTimestamp
     Timestamp time;
 
-    public ChannelModel(List<String> members, String lastmessage, Timestamp time) {
+    public ChannelModel(List<String> members, String lastmessage, String lastSpamMessage, Timestamp time) {
         this.members = members;
         this.lastmessage = lastmessage;
+        this.lastSpamMessage=lastSpamMessage;
         this.time = time;
+    }
+
+    public String getLastSpamMessage() {
+        return lastSpamMessage;
+    }
+
+    public void setLastSpamMessage(String lastSpamMessage) {
+        this.lastSpamMessage = lastSpamMessage;
     }
 
     public String getLastmessage() {

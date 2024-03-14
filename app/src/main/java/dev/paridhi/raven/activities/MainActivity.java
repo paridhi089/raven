@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout,new InboxFragment()).commit();
 
-        binding.mainToolbar.setTitle(firebaseAuth.getCurrentUser().getEmail());
+        binding.mainToolbar.setTitle("Raven");
 
         binding.mainToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -46,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent=new Intent(getApplicationContext(), LandingActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                } else if (item.getItemId()==R.id.api_test_menu) {
+
+                    startActivity(new Intent(getApplicationContext(), ApiTestActivity.class));
+
+
+
                 }
                 return true;
             }
