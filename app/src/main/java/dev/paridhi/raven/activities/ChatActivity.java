@@ -146,7 +146,7 @@ public class ChatActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),pred,Toast.LENGTH_LONG).show();
 
 
-                        if(pred=="ham")
+                        if(pred.equals("ham"))
                         {
                             DocumentReference documentReference=firestore.collection("channels").document(channelID).collection("messages").document();
 
@@ -183,7 +183,7 @@ public class ChatActivity extends AppCompatActivity {
                             });
 
                         }
-                        else
+                        else if(pred.equals("spam"))
                         {
                             DocumentReference documentReference=firestore.collection("channels").document(channelID).collection("spam").document();
 
